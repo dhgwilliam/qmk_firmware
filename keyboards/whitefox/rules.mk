@@ -31,6 +31,7 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 BACKLIGHT_DRIVER = custom
 VISUALIZER_ENABLE = yes
+DEBOUNCE_TYPE = eager_pk
 
 LED_DRIVER = is31fl3731c
 LED_WIDTH = 16
