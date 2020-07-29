@@ -53,6 +53,10 @@ void matrix_scan_user(void) {
     SEQ_TWO_KEYS(KC_G, KC_G) {
       SEND_STRING("gfo&&gmf\n");
     }
+
+    SEQ_TWO_KEYS(KC_DOT, KC_DOT) {
+      SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) "a" SS_DELAY(15) "v" SS_UP(X_LGUI) SS_UP(X_LSFT));
+    }
   }
 }
 
