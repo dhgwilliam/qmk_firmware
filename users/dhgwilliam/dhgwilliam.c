@@ -40,6 +40,7 @@ enum combo_events {
   MC_USCR,
   NEXT_CHANNEL,
   ENTR_SCLC_LALT,
+  SPC_SCLC_LALT,
   SPC_A_LALT,
   F_J_HYPER
 };
@@ -58,6 +59,7 @@ const uint16_t PROGMEM nm_combo[] = {KC_N, KC_M, COMBO_END};
 const uint16_t PROGMEM mc_combo[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM next_channel[] = {KC_A, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM entr_sclc_lalt[] = {KC_ENTER, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM spc_sclc_lalt[] = {KC_SPC, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM spc_a_lalt[] = {KC_SPC, KC_A, COMBO_END};
 const uint16_t PROGMEM f_j_hyper[] = {KC_F, KC_J, COMBO_END};
 
@@ -76,6 +78,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [MC_USCR]       = COMBO_ACTION(mc_combo),
   [NEXT_CHANNEL]  = COMBO_ACTION(next_channel),
   [ENTR_SCLC_LALT] = COMBO_ACTION(entr_sclc_lalt),
+  [SPC_SCLC_LALT] = COMBO_ACTION(spc_sclc_lalt),
   [SPC_A_LALT]    = COMBO_ACTION(spc_a_lalt),
   [F_J_HYPER]    = COMBO_ACTION(f_j_hyper)
 };
@@ -156,6 +159,13 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       } else {
         unregister_code(KC_LALT);
         layer_off(2);
+      }
+      break;
+    case SPC_SCLC_LALT:
+      if (pressed) {
+        register_code(KC_LALT);
+      } else {
+        unregister_code(KC_LALT);
       }
       break;
     case SPC_A_LALT:
