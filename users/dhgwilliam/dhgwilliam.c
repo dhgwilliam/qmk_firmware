@@ -3,9 +3,9 @@
 LEADER_EXTERNS();
 
 void matrix_scan_user(void) {
-    #ifdef SSD1306OLED
-      iota_gfx_task();
-    #endif
+  #ifdef SSD1306OLED
+    iota_gfx_task();
+  #endif
 
   LEADER_DICTIONARY() {
     leading = false;
