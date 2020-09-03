@@ -83,7 +83,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [F_J_HYPER]    = COMBO_ACTION(f_j_hyper)
 };
 
-void process_combo_event(uint8_t combo_index, bool pressed) {
+void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case WE_ESC:
       if (pressed) {
