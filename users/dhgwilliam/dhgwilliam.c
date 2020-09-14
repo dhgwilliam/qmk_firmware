@@ -14,13 +14,17 @@ void matrix_scan_user(void) {
     SEQ_TWO_KEYS(KC_G, KC_I) {
       SEND_STRING("/is:inbox\n");
     }
-    
+
     SEQ_TWO_KEYS(KC_G, KC_G) {
       SEND_STRING("gfo&&gmf\n");
     }
-    
+
     SEQ_TWO_KEYS(KC_DOT, KC_DOT) {
       SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) "a" SS_DELAY(15) "v" SS_UP(X_LGUI) SS_UP(X_LSFT));
+    }
+
+    SEQ_TWO_KEYS(KC_W, KC_O) {
+      SEND_STRING(SS_LALT("1") SS_DELAY(100) SS_LGUI(SS_LSFT(SS_LALT(SS_LCTL("s")))));
     }
   }
 }
