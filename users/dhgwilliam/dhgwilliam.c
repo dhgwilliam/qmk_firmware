@@ -168,8 +168,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case SPC_SCLC_LALT:
       if (pressed) {
         register_code(KC_LALT);
+        #ifdef REV6_CONFIG_H
+          layer_on(4);
+        #endif
       } else {
         unregister_code(KC_LALT);
+        #ifdef REV6_CONFIG_H
+          layer_off(4);
+        #endif
       }
       break;
     case SPC_A_LALT:
