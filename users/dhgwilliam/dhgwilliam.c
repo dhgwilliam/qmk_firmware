@@ -153,6 +153,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       if (pressed) {
         tap_code16(LGUI(KC_K));
         SEND_STRING(SS_DELAY(100));
+        tap_code16(KC_TAB);
         tap_code16(KC_ENTER);
       }
       break;
