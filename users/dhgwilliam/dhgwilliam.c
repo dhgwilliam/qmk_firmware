@@ -46,6 +46,7 @@ enum combo_events {
   ENTR_SCLC_LALT,
   SPC_SCLC_LALT,
   SPC_A_LALT,
+  BSPC_A_LALT,
   F_J_HYPER
 };
 
@@ -65,6 +66,7 @@ const uint16_t PROGMEM next_channel[] = {KC_A, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM entr_sclc_lalt[] = {KC_ENTER, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM spc_sclc_lalt[] = {KC_SPC, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM spc_a_lalt[] = {KC_SPC, KC_A, COMBO_END};
+const uint16_t PROGMEM bspc_a_lalt[] = {KC_BSPC, KC_A, COMBO_END};
 const uint16_t PROGMEM f_j_hyper[] = {KC_F, KC_J, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -84,6 +86,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [ENTR_SCLC_LALT] = COMBO_ACTION(entr_sclc_lalt),
   [SPC_SCLC_LALT] = COMBO_ACTION(spc_sclc_lalt),
   [SPC_A_LALT]    = COMBO_ACTION(spc_a_lalt),
+  [BSPC_A_LALT]    = COMBO_ACTION(bspc_a_lalt),
   [F_J_HYPER]    = COMBO_ACTION(f_j_hyper)
 };
 
@@ -169,17 +172,30 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case SPC_SCLC_LALT:
       if (pressed) {
         register_code(KC_LALT);
-        #ifdef REV6_CONFIG_H
+        #if defined(REV6_CONFIG_H)
           layer_on(4);
+        #endif
+        #if defined KBDIO_ATREUS
+          layer_on(1);
         #endif
       } else {
         unregister_code(KC_LALT);
         #ifdef REV6_CONFIG_H
           layer_off(4);
         #endif
+        #if defined KBDIO_ATREUS
+          layer_off(1);
+        #endif
       }
       break;
     case SPC_A_LALT:
+      if (pressed) {
+        register_code(KC_LALT);
+      } else {
+        unregister_code(KC_LALT);
+      }
+      break;
+    case BSPC_A_LALT:
       if (pressed) {
         register_code(KC_LALT);
       } else {
